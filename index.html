@@ -1,18 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>koe playback</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>koe</title>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 40px;">
+<body style="margin:40px;font-family:sans-serif;">
+  <audio id="audio" controls autoplay style="width:100%"></audio>
 
-  <p>この声は、ここに残っています。</p>
-
-  <audio controls autoplay style="width: 100%; max-width: 400px;">
-    <source src="YOUR_AUDIO_URL.mp3" type="audio/mpeg">
-    お使いのブラウザは音声再生に対応していません。
-  </audio>
-
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    if (id) {
+      document.getElementById("audio").src =
+        `https://storage.googleapis.com/koe-audio/mvp01-hide/${id}.mp3`;
+    }
+  </script>
 </body>
 </html>
